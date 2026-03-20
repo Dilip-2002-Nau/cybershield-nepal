@@ -26,7 +26,7 @@ const Footer = () => (
       </div>
     </div>
     <div className="footer-bottom">
-      <p>© 2024 CyberShield Nepal. Built with <Heart size={14} className="heart-icon" /> for a safer Nepal.</p>
+      <p>© 2026 CyberShield Nepal. Built with <Heart size={14} className="heart-icon" /> for a safer Nepal with Dilip.</p>
     </div>
   </footer>
 );
