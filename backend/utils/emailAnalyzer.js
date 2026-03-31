@@ -108,7 +108,7 @@ const analyzeEmail = (subject = '', body = '', sender = '') => {
     // Check for free email services impersonating companies
     if (
       (senderLower.includes('gmail') || senderLower.includes('yahoo') || senderLower.includes('hotmail')) &&
-      (senderLower.includes('bank') || senderLower.includes('paypal') || senderLower.includes('amazon') || senderLower.includes('nepal'))
+      (senderLower.includes('bank') || senderLower.includes('paypal') || senderLower.includes('amazon') || /nepal\s*bank|nbl|rastriya\s*banijya/i.test(senderLower))
     ) {
       riskScore += 20;
       foundIndicators.push('📧 Sender uses free email claiming to be a company/bank');

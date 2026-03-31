@@ -1,25 +1,15 @@
-/**
- * Auth Context
- * Global authentication state management
- */
-
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import axios from 'axios';
+import api from '../utils/api';
 
 const AuthContext = createContext(null);
-
-// Base API URL
-const API_BASE = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [token, setToken] = useState(localStorage.getItem('cybershield_token'));
 
-  // Set axios default auth header
   useEffect(() => {
     if (token) {
-      axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
       fetchUser();
     } else {
       setLoading(false);
@@ -28,7 +18,7 @@ export const AuthProvider = ({ children }) => {
 
   const fetchUser = async () => {
     try {
-      const res = await axios.get(`${API_BASE}/auth/me`);
+      const res = await api.get('/auth/me');
       setUser(res.data.user);
     } catch {
       logout();
@@ -38,20 +28,18 @@ export const AuthProvider = ({ children }) => {
   };
 
   const login = async (email, password) => {
-    const res = await axios.post(`${API_BASE}/auth/login`, { email, password });
+    const res = await api.post('/auth/login', { email, password });
     const { token: newToken, user: newUser } = res.data;
     localStorage.setItem('cybershield_token', newToken);
-    axios.defaults.headers.common['Authorization'] = `Bearer ${newToken}`;
     setToken(newToken);
     setUser(newUser);
     return res.data;
   };
 
   const register = async (name, email, password) => {
-    const res = await axios.post(`${API_BASE}/auth/register`, { name, email, password });
+    const res = await api.post('/auth/register', { name, email, password });
     const { token: newToken, user: newUser } = res.data;
     localStorage.setItem('cybershield_token', newToken);
-    axios.defaults.headers.common['Authorization'] = `Bearer ${newToken}`;
     setToken(newToken);
     setUser(newUser);
     return res.data;
@@ -59,7 +47,6 @@ export const AuthProvider = ({ children }) => {
 
   const logout = () => {
     localStorage.removeItem('cybershield_token');
-    delete axios.defaults.headers.common['Authorization'];
     setToken(null);
     setUser(null);
   };

@@ -123,7 +123,9 @@ const analyzeUrl = (url) => {
   }
 
   // ─── Check 10: Trusted domain check ──────────────────────────
-  const isTrusted = TRUSTED_DOMAINS.some(domain => hostname.endsWith(domain));
+  const isTrusted = TRUSTED_DOMAINS.some(domain =>
+    hostname === domain || hostname.endsWith('.' + domain)
+  );
   if (isTrusted) {
     riskScore = Math.max(0, riskScore - 20);
     warnings.push('✅ Domain appears to be a known legitimate site');

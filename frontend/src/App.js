@@ -37,6 +37,8 @@ function App() {
               <Route path="/report-threat" element={<ReportThreatPage />} />
               <Route path="/learning" element={<LearningPage />} />
               <Route path="/login" element={<AuthPage />} />
+              <Route path="/register" element={<AuthPage />} />
+              <Route path="*" element={<div style={{textAlign:'center',padding:'4rem'}}><h2>404 – Page not found</h2></div>} />
             </Routes>
           </main>
           <Footer />

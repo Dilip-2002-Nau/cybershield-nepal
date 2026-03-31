@@ -148,8 +148,8 @@ const checkPassword = (password) => {
 
   return {
     strength,
-    score,
-    percentage,
+    score: Math.min(score, 100),
+    percentage: Math.min(score, 100),
     suggestions,
     passed,
     failed,

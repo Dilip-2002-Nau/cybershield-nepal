@@ -5,6 +5,23 @@
 
 ---
 
+## ⚡ Quick Setup
+
+**Verify your system is ready:**
+```bash
+node setup-verify.js
+```
+
+**Install and run:**
+```bash
+npm run install-all   # Install dependencies
+npm run dev           # Start both backend & frontend
+```
+
+**For detailed setup instructions, see [SETUP_GUIDE.md](./SETUP_GUIDE.md)**
+
+---
+
 ## 🖥️ Tech Stack
 
 | Layer | Technology |

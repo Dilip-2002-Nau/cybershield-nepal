@@ -12,7 +12,7 @@ const { analyzeEmail } = require('../utils/emailAnalyzer');
  * @route   POST /api/scan-url
  * @access  Public
  */
-const scanUrl = (req, res) => {
+const scanUrl = async (req, res) => {
   try {
     const { url } = req.body;
 
@@ -48,7 +48,7 @@ const scanUrl = (req, res) => {
  * @route   POST /api/check-password
  * @access  Public
  */
-const checkPasswordStrength = (req, res) => {
+const checkPasswordStrength = async (req, res) => {
   try {
     const { password } = req.body;
 
