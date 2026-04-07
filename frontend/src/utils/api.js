@@ -7,7 +7,7 @@ import axios from 'axios';
 
 
 // Create axios instance
-const api = axios.create({ baseURL: "http://localhost:5001/api" });
+const api = axios.create({ baseURL: "https://satisfied-magic-production-6ffe.up.railway.app/api" });
 
 // Attach token to every request
 api.interceptors.request.use((config) => {
