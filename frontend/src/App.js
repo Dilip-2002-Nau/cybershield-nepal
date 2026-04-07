@@ -27,6 +27,7 @@ function App() {
     <AuthProvider>
       <Router>
         <div className="app-wrapper">
+          {/* Navbar component */}
           <Navbar />
           <main className="main-content">
             <Routes>
